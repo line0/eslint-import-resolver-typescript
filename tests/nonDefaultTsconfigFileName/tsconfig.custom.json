@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "folder/*": ["*"],
+    }
+  },
+  "files": ["index.ts", "tsImportee.ts"]
+}

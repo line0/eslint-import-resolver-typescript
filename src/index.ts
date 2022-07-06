@@ -9,7 +9,7 @@ import {
   Resolver,
   ResolverFactory,
 } from 'enhanced-resolve'
-import { createPathsMatcher, getTsconfig } from 'get-tsconfig'
+import { createPathsMatcher, getTsconfig, parseTsconfig } from 'get-tsconfig'
 import isCore from 'is-core-module'
 import isGlob from 'is-glob'
 import { createSyncFn } from 'synckit'
@@ -350,7 +350,10 @@ function initMappers(options: TsResolverOptions) {
   ]
 
   mappers = projectPaths.map(projectPath => {
-    const tsconfigResult = getTsconfig(projectPath)
+    const tsconfigResult =
+      fs.existsSync(projectPath) && fs.statSync(projectPath).isFile()
+        ? { path: projectPath, config: parseTsconfig(projectPath) }
+        : getTsconfig(projectPath)
     return tsconfigResult && createPathsMatcher(tsconfigResult)
   })
 

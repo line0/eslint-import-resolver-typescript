@@ -87,6 +87,7 @@
     "test:withPathsAndNestedBaseUrl": "eslint --ext ts,tsx tests/withPathsAndNestedBaseUrl",
     "test:withQuerystring": "eslint --ext ts,tsx tests/withQuerystring",
     "test:withoutPaths": "eslint --ext ts,tsx tests/withoutPaths",
+    "test:nonDefaultTsconfigFileName": "eslint --ext ts,tsx tests/nonDefaultTsconfigFileName",
     "typecov": "type-coverage"
   },
   "peerDependencies": {
